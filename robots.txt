@@ -1,0 +1,6 @@
+# Permitir que todos los buscadores rastreen todo el sitio web
+User-agent: *
+Allow: /
+
+# Dirección del mapa del sitio para Google y otros motores
+Sitemap: https://abigail-dulanto.github.io/JARD-NALQUILA/sitemap.xml
