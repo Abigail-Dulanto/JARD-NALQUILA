@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquilaJardín - Alquiler de Herramientas y Servicios de Jardinería</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- FontAwesome para íconos sociales y de búsqueda -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGACIÓN PRINCIPAL -->
+  <header class="main-header">
+    <div class="logo">
+      <i class="fa-solid fa-leaf"></i>
+      <span>AlquilaJardín</span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#inicio" class="nav-link active">Alquiler</a></li>
+        <li><a href="#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+      </ul>
+    </nav>
+    <a href="#cuenta" class="btn-account">Mi cuenta</a>
+  </header>
+
+  <main>
+    <!-- SECCIÓN 1: HERO / INICIO -->
+    <section id="inicio" class="hero-section">
+      <div class="hero-overlay">
+        <h1>Alquiler de herramientas</h1>
+        <p>Servicios de jardinería en Perú</p>
+        
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="¿Qué herramienta o servicio necesitas?">
+        </div>
+
+        <a href="#catalogo" class="btn-primary">Explora nuestro catálogo</a>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE PASOS / CARACTERÍSTICAS -->
+    <section class="features-section">
+      <div class="feature-card light-green">
+        <span class="step-number">1</span>
+        <div class="feature-info">
+          <h3>Alquiler de herramientas</h3>
+          <img src="https://picsum.photos/id/1071/150/100" alt="Alquiler de herramientas">
+        </div>
+      </div>
+
+      <div class="feature-card dark-green">
+        <span class="step-number">2</span>
+        <div class="feature-info">
+          <h3>Servicio de jardinería</h3>
+          <p>Poda / Mantenimiento</p>
+          <img src="https://picsum.photos/id/292/150/100" alt="Servicio de jardinería">
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: CATÁLOGO DE PRODUCTOS -->
+    <section id="catalogo" class="catalog-section">
+      <aside class="filters-sidebar">
+        <h2>CATÁLOGO</h2>
+        <h3>FILTROS</h3>
+        <ul>
+          <li><a href="#">HERRAMIENTAS DE PODA</a></li>
+          <li><a href="#">CORTE DE CÉSPED</a></li>
+          <li><a href="#">LIMPIEZA</a></li>
+          <li><a href="#">ESPECIALIZADAS</a></li>
+        </ul>
+      </aside>
+
+      <div class="products-grid">
+        <!-- Producto 1 -->
+        <article class="product-card">
+          <img src="https://picsum.photos/id/1062/250/150" alt="Motosierra Stihl MS170">
+          <h4>Motosierra Stihl MS170</h4>
+          <div class="rating">★★★★★</div>
+          <p class="price">S/18/día</p>
+          <button class="btn-action">Alquilar</button>
+        </article>
+
+        <!-- Producto 2 -->
+        <article class="product-card">
+          <img src="https://picsum.photos/id/1070/250/150" alt="Cortasetos Makita">
+          <h4>Cortasetos Makita</h4>
+          <div class="rating">★★★★★</div>
+          <p class="price">S/18/día</p>
+          <button class="btn-action">Alquilar</button>
+        </article>
+
+        <!-- Producto 3 -->
+        <article class="product-card">
+          <img src="https://picsum.photos/id/1072/250/150" alt="Soplador Husqvarna">
+          <h4>Soplador Husqvarna</h4>
+          <div class="rating">★★★★★</div>
+          <p class="price">S/18/día</p>
+          <button class="btn-action">Alquilar</button>
+        </article>
+
+        <!-- Producto 4 -->
+        <article class="product-card">
+          <img src="https://picsum.photos/id/1073/250/150" alt="Cortasetos Makita Especial">
+          <h4>Cortasetos Makita</h4>
+          <div class="rating">★★★★★</div>
+          <p class="price">S/18/día</p>
+          <button class="btn-action">Alquilar</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: SERVICIOS Y TESTIMONIOS -->
+    <section id="servicios" class="services-section">
+      <div class="service-row">
+        <img src="https://picsum.photos/id/191/400/200" alt="Poda y mantenimiento">
+        <div class="service-banner dark">
+          <h2>PODA Y MANTENIMIENTO DE ÁRBOLES</h2>
+        </div>
+      </div>
+
+      <div class="service-row flex-reverse">
+        <img src="https://picsum.photos/id/152/400/200" alt="Mantenimiento de césped">
+        <div class="service-banner highlight">
+          <h2>MANTENIMIENTO INTEGRAL DE CÉSPED</h2>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <img src="https://picsum.photos/id/110/400/200" alt="Diseño de jardines">
+        <div class="service-banner dark">
+          <h2>DISEÑO DE JARDINES</h2>
+        </div>
+      </div>
+
+      <!-- Testimonios -->
+      <div class="testimonials-block">
+        <img src="https://picsum.photos/id/64/150/150" alt="Familia feliz" class="testimonial-avatar">
+        <div class="testimonial-content">
+          <h3>Testimonios</h3>
+          <blockquote>"Estamos muy contentos con el diseño de nuestro jardín; transformaron JardínAlquila a otro nivel."</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: QUIÉNES SOMOS & CONTACTO -->
+    <section id="nosotros" class="about-contact-section">
+      <div class="about-column">
+        <h2>QUIÉNES SOMOS</h2>
+        <img src="https://picsum.photos/id/1005/500/250" alt="Equipo JardínAlquila" class="team-img">
+        
+        <h3>Nuestra Historia</h3>
+        <p>JardínAlquila es una empresa fundada en el año 2001, especializada en brindar soluciones integrales para el cuidado, mantenimiento y diseño de áreas verdes. Ofrecemos tanto el alquiler de herramientas y maquinaria de jardinería de última tecnología como un servicio profesional adaptado a las necesidades de clientes residenciales, comerciales y corporativos.</p>
+      </div>
+
+      <div class="contact-map-column">
+        <!-- Formulario -->
+        <div class="contact-box">
+          <h2>CONTACTO</h2>
+          <form id="contactForm">
+            <input type="text" placeholder="NOMBRE" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Mensaje" rows="4" required></textarea>
+            <button type="submit" class="btn-action">Enviar</button>
+          </form>
+        </div>
+
+        <!-- Mapa -->
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249673.7153724227!2d-77.127863!3d-12.026268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c5f619ee3ec7%3A0x1420609be3542289!2sLima!5e0!3m2!1ses!2spe!4v1620000000000!5m2!1ses!2spe" 
+            width="100%" 
+            height="250" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PIE DE PÁGINA (FOOTER) -->
+  <footer class="main-footer">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <i class="fa-solid fa-leaf"></i>
+        <span>AlquilaJardín</span>
+      </div>
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p><i class="fa-brands fa-whatsapp"></i> Contacto: 982805651</p>
+      <p><i class="fa-regular fa-envelope"></i> Correo: JardinAlquil@gmail.com</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
