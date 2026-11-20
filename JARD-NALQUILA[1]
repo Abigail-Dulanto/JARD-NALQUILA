@@ -1,210 +1,1206 @@
-<meta name="google-site-verification" content="RamvbXYJVEdeb" />
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="RamvbXYJVEdeb" />
-    <title>AlquilaJardín - Alquiler de Herramientas y Servicios de Jardinería</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- FontAwesome para íconos sociales y de búsqueda -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+<meta name="google-site-verification" content="RamvbXYJVEdeb" />
+  <title>AlquilaJardín - Alquiler de Herramientas y Servicios de Jardinería</title>
+  <style>
+    :root {
+      --verde-oscuro: #246a22;
+      --verde-medio: #348a2b;
+      --verde-claro: #58b81e;
+      --verde-salvia: #5c7d51;
+      --gris-fondo: #dedede;
+      --gris-header: #a89f9f;
+      --gris-tarjeta: #a49898;
+      --rojo-cuenta: #8b1e1e;
+      --marron-pill: #7d5b5b;
+      --blanco: #ffffff;
+      --negro: #1a1a1a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #2b2b2b;
+      color: var(--negro);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 1100px;
+      background-color: var(--gris-fondo);
+      min-height: 100vh;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* NAVEGACIÓN SUPERIOR */
+    header {
+      background-color: var(--blanco);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #ccc;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    header.header-gris {
+      background-color: var(--gris-header);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--verde-oscuro);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--verde-claro);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    nav button.nav-link {
+      background: transparent;
+      border: none;
+      font-family: Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: var(--negro);
+      cursor: pointer;
+      padding: 6px 14px;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+
+    nav button.nav-link:hover {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+
+    nav button.nav-link.active {
+      background-color: var(--marron-pill);
+      color: var(--blanco);
+    }
+
+    .btn-mi-cuenta {
+      background-color: var(--rojo-cuenta);
+      color: var(--blanco);
+      border: none;
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: transform 0.15s, background 0.2s;
+    }
+
+    .btn-mi-cuenta:hover {
+      background-color: #a82424;
+      transform: scale(1.03);
+    }
+
+    /* GESTIÓN DE PANTALLAS */
+    .screen {
+      display: none;
+      flex: 1;
+      flex-direction: column;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* PANTALLA 1: INICIO */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+        url('https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      padding: 60px 40px;
+      color: var(--blanco);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 360px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: 2.6rem;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+      margin-bottom: 6px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    }
+
+    .search-bar {
+      display: flex;
+      max-width: 480px;
+      background: var(--blanco);
+      border-radius: 25px;
+      padding: 6px 16px;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .search-bar input {
+      border: none;
+      outline: none;
+      width: 100%;
+      font-size: 0.95rem;
+      padding: 6px;
+    }
+
+    .btn-hero {
+      align-self: flex-start;
+      background-color: var(--marron-pill);
+      color: var(--blanco);
+      border: 2px solid rgba(255,255,255,0.4);
+      padding: 12px 26px;
+      border-radius: 25px;
+      font-family: Georgia, serif;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-hero:hover {
+      background-color: #634646;
+      transform: scale(1.03);
+    }
+
+    .pasos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      padding: 35px 40px;
+      background-color: var(--blanco);
+    }
+
+    .paso-card {
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--blanco);
+      cursor: pointer;
+      transition: transform 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .paso-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .paso-1 {
+      background-color: var(--verde-claro);
+      color: #11380e;
+    }
+
+    .paso-2 {
+      background-color: var(--verde-oscuro);
+    }
+
+    .paso-num {
+      font-size: 3.2rem;
+      font-weight: 900;
+      font-family: Georgia, serif;
+      margin-right: 16px;
+    }
+
+    .paso-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .footer-inicio {
+      margin-top: auto;
+      background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.9)),
+        url('https://images.unsplash.com/photo-1592419044706-39796d40f98c?auto=format&fit=crop&w=1200&q=80') center/cover;
+      padding: 24px 40px;
+      border-top: 2px solid #ccc;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #bbb;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .socials span {
+      display: inline-block;
+      background: var(--verde-oscuro);
+      color: white;
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      border-radius: 50%;
+      margin-left: 6px;
+      font-weight: bold;
+      font-size: 0.85rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 12px;
+      font-weight: 600;
+      color: #222;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* PANTALLA 2: CATÁLOGO */
+    .catalogo-container {
+      padding: 35px 40px;
+      flex: 1;
+    }
+
+    .titulo-seccion {
+      font-family: Georgia, serif;
+      font-size: 2.3rem;
+      font-weight: bold;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+    }
+
+    .catalogo-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .catalogo-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .filtros-box {
+      font-family: Georgia, serif;
+    }
+
+    .filtros-box h3 {
+      font-size: 1.25rem;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    .filtro-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      font-family: Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: bold;
+      padding: 10px 12px;
+      margin-bottom: 6px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+
+    .filtro-btn:hover, .filtro-btn.activo {
+      background-color: var(--verde-oscuro);
+      color: var(--blanco);
+    }
+
+    .productos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 22px;
+    }
+
+    .producto-card {
+      background-color: var(--blanco);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .producto-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: contain;
+      margin-bottom: 12px;
+    }
+
+    .producto-card h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .estrellas {
+      color: #e6a800;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+
+    .precio {
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: #222;
+    }
+
+    .btn-alquilar {
+      background-color: var(--verde-medio);
+      color: var(--blanco);
+      border: none;
+      padding: 9px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+
+    .btn-alquilar:hover {
+      background-color: var(--verde-oscuro);
+    }
+
+    /* PANTALLA 3: SERVICIOS */
+    .servicio-fila {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 210px;
+    }
+
+    @media (max-width: 700px) {
+      .servicio-fila {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .servicio-img {
+      width: 100%;
+      height: 100%;
+      min-height: 200px;
+      object-fit: cover;
+    }
+
+    .servicio-texto {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      text-align: center;
+      color: var(--blanco);
+      font-family: Georgia, serif;
+    }
+
+    .servicio-texto h3 {
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .bg-salvia { background-color: var(--verde-salvia); }
+    .bg-verde-fuerte { background-color: var(--verde-medio); }
+    .bg-verde-oscuro { background-color: #35542b; }
+
+    .testimonios-box {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      background-color: #9e9494;
+      align-items: center;
+    }
+
+    @media (max-width: 700px) {
+      .testimonios-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .testimonios-box img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .testimonios-contenido {
+      padding: 24px 36px;
+      text-align: center;
+    }
+
+    .testimonios-contenido h3 {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    /* PANTALLA 4: NOSOTROS / QUIÉNES SOMOS */
+    .nosotros-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 30px;
+      padding: 35px 40px;
+    }
+
+    @media (max-width: 768px) {
+      .nosotros-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .equipo-img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .historia-box h3 {
+      font-family: Georgia, serif;
+      font-size: 1.6rem;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .historia-box p {
+      line-height: 1.6;
+      text-align: justify;
+      font-size: 0.98rem;
+    }
+
+    .contacto-card {
+      background-color: var(--verde-medio);
+      padding: 26px;
+      border-radius: 6px;
+      color: var(--blanco);
+      margin-bottom: 24px;
+    }
+
+    .contacto-card h3 {
+      font-family: Georgia, serif;
+      font-size: 1.6rem;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .contacto-card input,
+    .contacto-card textarea {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      border: none;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+
+    .mapa-box {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid #bbb;
+      height: 220px;
+    }
+
+    .mapa-box iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* PANTALLA 5: COMPLETAR ALQUILER (MODAL / PANTALLA) */
+    .alquiler-wrapper {
+      background: linear-gradient(rgba(53, 84, 43, 0.78), rgba(53, 84, 43, 0.85)),
+        url('https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1200&q=80') center/cover;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .alquiler-modal {
+      background-color: var(--gris-fondo);
+      width: 100%;
+      max-width: 640px;
+      padding: 32px;
+      border-radius: 8px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+    }
+
+    .alquiler-modal h2 {
+      text-align: center;
+      font-size: 1.7rem;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    .alquiler-body {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 600px) {
+      .alquiler-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-grupo {
+      margin-bottom: 14px;
+    }
+
+    .form-grupo label {
+      display: block;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .form-grupo input {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid #bfa89a;
+      background-color: #dec9bc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .resumen-herramienta {
+      background-color: var(--blanco);
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .resumen-herramienta img {
+      width: 100%;
+      height: 130px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .btn-confirmar {
+      width: 100%;
+      background-color: var(--verde-medio);
+      color: var(--blanco);
+      border: none;
+      padding: 14px;
+      font-size: 1.15rem;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-confirmar:hover {
+      background-color: var(--verde-oscuro);
+    }
+
+    /* PANTALLA 6: RESERVA EXITOSA */
+    .exito-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .exito-card {
+      background-color: var(--gris-tarjeta);
+      padding: 45px 40px;
+      max-width: 520px;
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 32px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
+
+    .check-circle {
+      width: 82px;
+      height: 82px;
+      border: 4px solid #35d449;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: #35d449;
+      font-size: 2.8rem;
+      font-weight: bold;
+    }
+
+    .exito-card h2 {
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+    }
+
+    .exito-card p {
+      font-size: 1.15rem;
+      color: #2b2b2b;
+      line-height: 1.5;
+    }
+
+    .btn-volver-inicio {
+      background-color: var(--verde-medio);
+      color: var(--blanco);
+      border: none;
+      padding: 15px 48px;
+      font-size: 1.15rem;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-volver-inicio:hover {
+      background-color: var(--verde-oscuro);
+    }
+
+    /* PANTALLA 7: MI CUENTA / INICIAR SESIÓN */
+    .login-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .login-logo {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--verde-oscuro);
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .login-logo span {
+      color: var(--verde-claro);
+    }
+
+    .login-sub {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .login-card {
+      background-color: var(--gris-tarjeta);
+      padding: 36px 34px;
+      width: 100%;
+      max-width: 460px;
+      border-radius: 4px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .login-card h2 {
+      font-family: Georgia, serif;
+      text-align: center;
+      font-size: 1.7rem;
+      margin-bottom: 24px;
+    }
+
+    .login-card label {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+
+    .login-card input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background-color: #e6e6e6;
+      margin-bottom: 18px;
+      font-size: 1rem;
+    }
+
+    .olvido-pass {
+      display: block;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #222;
+      margin-bottom: 18px;
+      text-decoration: none;
+    }
+
+    .btn-registrate {
+      width: 100%;
+      background-color: var(--verde-medio);
+      color: var(--blanco);
+      border: none;
+      padding: 13px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 18px;
+    }
+
+    .btn-registrate:hover {
+      background-color: var(--verde-oscuro);
+    }
+
+    .social-login {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-google { background: #ffffff; color: #db4437; }
+    .btn-fb { background: #1877f2; color: #ffffff; }
+  </style>
 </head>
 <body>
-  <!-- BARRA DE NAVEGACIÓN PRINCIPAL -->
-  <header class="main-header">
-    <div class="logo">
-      <i class="fa-solid fa-leaf"></i>
-      <span>AlquilaJardín</span>
-    </div>
-    <nav class="main-nav">
-      <ul>
-        <li><a href="#inicio" class="nav-link active">Alquiler</a></li>
-        <li><a href="#servicios" class="nav-link">Servicios</a></li>
-        <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
-      </ul>
-    </nav>
-    <a href="#cuenta" class="btn-account">Mi cuenta</a>
-  </header>
 
-  <main>
-    <!-- SECCIÓN 1: HERO / INICIO -->
-    <section id="inicio" class="hero-section">
-      <div class="hero-overlay">
+  <div class="app-container">
+    <!-- BARRA DE NAVEGACIÓN PRINCIPAL -->
+    <header id="main-header">
+      <a class="logo" onclick="mostrarPantalla('inicio')">
+        🌿 Alquila<span>Jardín</span>
+      </a>
+      <nav>
+        <button class="nav-link" id="nav-catalogo" onclick="mostrarPantalla('catalogo')">Alquiler</button>
+        <button class="nav-link" id="nav-servicios" onclick="mostrarPantalla('servicios')">Servicios</button>
+        <button class="nav-link" id="nav-nosotros" onclick="mostrarPantalla('nosotros')">Nosotros</button>
+        <button class="btn-mi-cuenta" onclick="mostrarPantalla('cuenta')">Mi cuenta</button>
+      </nav>
+    </header>
+
+    <!-- ==========================================
+         PANTALLA 1: INICIO
+    =========================================== -->
+    <section id="pantalla-inicio" class="screen active">
+      <div class="hero">
         <h1>Alquiler de herramientas</h1>
         <p>Servicios de jardinería en Perú</p>
-        
-        <div class="search-box">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="¿Qué herramienta o servicio necesitas?">
+        <div class="search-bar">
+          <input type="text" id="buscador-inicio" placeholder="🔍 ¿Qué herramienta o servicio buscas?" onkeyup="if(event.key==='Enter') mostrarPantalla('catalogo')" />
+        </div>
+        <button class="btn-hero" onclick="mostrarPantalla('catalogo')">Explora nuestro catálogo</button>
+      </div>
+
+      <div class="pasos-grid">
+        <div class="paso-card paso-1" onclick="mostrarPantalla('catalogo')">
+          <div style="display:flex; align-items:center;">
+            <span class="paso-num">1</span>
+            <div class="paso-info">
+              <h3>Alquiler de herramientas</h3>
+              <p>Maquinaria profesional por día para tu jardín.</p>
+            </div>
+          </div>
+          <span style="font-size:2.4rem;">🚜</span>
         </div>
 
-        <a href="#catalogo" class="btn-primary">Explora nuestro catálogo</a>
+        <div class="paso-card paso-2" onclick="mostrarPantalla('servicios')">
+          <div style="display:flex; align-items:center;">
+            <span class="paso-num">2</span>
+            <div class="paso-info">
+              <h3>Servicio de jardinería</h3>
+              <p>Poda, diseño y mantenimiento integral.</p>
+            </div>
+          </div>
+          <span style="font-size:2.4rem;">🌳</span>
+        </div>
+      </div>
+
+      <footer class="footer-inicio">
+        <div class="footer-top">
+          <div class="logo" onclick="mostrarPantalla('inicio')">🌿 Alquila<span>Jardín</span></div>
+          <div class="socials">
+            <span>IG</span>
+            <span>TT</span>
+            <span>FB</span>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div>📞 Contacto: 932915884</div>
+          <div>✉️ Correo: JardinAlqui@gmail.com</div>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ==========================================
+         PANTALLA 2: CATÁLOGO
+    =========================================== -->
+    <section id="pantalla-catalogo" class="screen">
+      <div class="catalogo-container">
+        <h2 class="titulo-seccion">CATÁLOGO</h2>
+        <div class="catalogo-layout">
+          <aside class="filtros-box">
+            <h3>FILTROS</h3>
+            <button class="filtro-btn activo" onclick="filtrarProductos('todos', this)">TODOS LOS EQUIPOS</button>
+            <button class="filtro-btn" onclick="filtrarProductos('poda', this)">HERRAMIENTAS DE PODA</button>
+            <button class="filtro-btn" onclick="filtrarProductos('cesped', this)">CORTE DE CÉSPED</button>
+            <button class="filtro-btn" onclick="filtrarProductos('limpieza', this)">LIMPIEZA</button>
+            <button class="filtro-btn" onclick="filtrarProductos('especializadas', this)">ESPECIALIZADAS</button>
+          </aside>
+
+          <div class="productos-grid" id="grid-productos">
+            <!-- Producto 1 -->
+            <div class="producto-card" data-cat="poda">
+              <img src="https://images.unsplash.com/photo-1590496793929-36417d3117de?auto=format&fit=crop&w=400&q=80" alt="Motosierra Stihl MS170" />
+              <div>
+                <h4>Motosierra Stihl MS170</h4>
+                <div class="estrellas">★★★★★</div>
+                <div class="precio">$18/día</div>
+                <button class="btn-alquilar" onclick="abrirAlquiler('Motosierra Stihl MS170', '$18/día', 'https://images.unsplash.com/photo-1590496793929-36417d3117de?auto=format&fit=crop&w=400&q=80')">Alquilar</button>
+              </div>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="producto-card" data-cat="cesped">
+              <img src="https://images.unsplash.com/photo-1622383563227-04401ab4e5ea?auto=format&fit=crop&w=400&q=80" alt="Cortasetos Makita" />
+              <div>
+                <h4>Cortasetos Makita</h4>
+                <div class="estrellas">★★★★★</div>
+                <div class="precio">$18/día</div>
+                <button class="btn-alquilar" onclick="abrirAlquiler('Cortasetos Makita', '$18/día', 'https://images.unsplash.com/photo-1622383563227-04401ab4e5ea?auto=format&fit=crop&w=400&q=80')">Alquilar</button>
+              </div>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="producto-card" data-cat="limpieza">
+              <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=400&q=80" alt="Soplador Husqvarna" />
+              <div>
+                <h4>Soplador Husqvarna</h4>
+                <div class="estrellas">★★★★★</div>
+                <div class="precio">$18/día</div>
+                <button class="btn-alquilar" onclick="abrirAlquiler('Soplador Husqvarna', '$18/día', 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=400&q=80')">Alquilar</button>
+              </div>
+            </div>
+
+            <!-- Producto 4 -->
+            <div class="producto-card" data-cat="especializadas">
+              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=400&q=80" alt="Podadora Eléctrica Makita" />
+              <div>
+                <h4>Podadora Eléctrica Makita</h4>
+                <div class="estrellas">★★★★★</div>
+                <div class="precio">$20/día</div>
+                <button class="btn-alquilar" onclick="abrirAlquiler('Podadora Eléctrica Makita', '$20/día', 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=400&q=80')">Alquilar</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- SECCIÓN DE PASOS / CARACTERÍSTICAS -->
-    <section class="features-section">
-      <div class="feature-card light-green">
-        <span class="step-number">1</span>
-        <div class="feature-info">
-          <h3>Alquiler de herramientas</h3>
-          <img src="https://picsum.photos/id/1071/150/100" alt="Alquiler de herramientas">
+    <!-- ==========================================
+         PANTALLA 3: SERVICIOS
+    =========================================== -->
+    <section id="pantalla-servicios" class="screen">
+      <div class="servicio-fila">
+        <img class="servicio-img" src="https://images.unsplash.com/photo-1557429287-b2e26467fc2b?auto=format&fit=crop&w=800&q=80" alt="Poda y mantenimiento de árboles" />
+        <div class="servicio-texto bg-salvia">
+          <h3>PODA Y MANTENIMIENTO DE ÁRBOLES</h3>
+          <p>Equipo certificado para poda en altura, tala controlada y salud arbórea.</p>
         </div>
       </div>
 
-      <div class="feature-card dark-green">
-        <span class="step-number">2</span>
-        <div class="feature-info">
-          <h3>Servicio de jardinería</h3>
-          <p>Poda / Mantenimiento</p>
-          <img src="https://picsum.photos/id/292/150/100" alt="Servicio de jardinería">
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN 2: CATÁLOGO DE PRODUCTOS -->
-    <section id="catalogo" class="catalog-section">
-      <aside class="filters-sidebar">
-        <h2>CATÁLOGO</h2>
-        <h3>FILTROS</h3>
-        <ul>
-          <li><a href="#">HERRAMIENTAS DE PODA</a></li>
-          <li><a href="#">CORTE DE CÉSPED</a></li>
-          <li><a href="#">LIMPIEZA</a></li>
-          <li><a href="#">ESPECIALIZADAS</a></li>
-        </ul>
-      </aside>
-
-      <div class="products-grid">
-        <!-- Producto 1 -->
-        <article class="product-card">
-          <img src="https://picsum.photos/id/1062/250/150" alt="Motosierra Stihl MS170">
-          <h4>Motosierra Stihl MS170</h4>
-          <div class="rating">★★★★★</div>
-          <p class="price">S/18/día</p>
-          <button class="btn-action">Alquilar</button>
-        </article>
-
-        <!-- Producto 2 -->
-        <article class="product-card">
-          <img src="https://picsum.photos/id/1070/250/150" alt="Cortasetos Makita">
-          <h4>Cortasetos Makita</h4>
-          <div class="rating">★★★★★</div>
-          <p class="price">S/18/día</p>
-          <button class="btn-action">Alquilar</button>
-        </article>
-
-        <!-- Producto 3 -->
-        <article class="product-card">
-          <img src="https://picsum.photos/id/1072/250/150" alt="Soplador Husqvarna">
-          <h4>Soplador Husqvarna</h4>
-          <div class="rating">★★★★★</div>
-          <p class="price">S/18/día</p>
-          <button class="btn-action">Alquilar</button>
-        </article>
-
-        <!-- Producto 4 -->
-        <article class="product-card">
-          <img src="https://picsum.photos/id/1073/250/150" alt="Cortasetos Makita Especial">
-          <h4>Cortasetos Makita</h4>
-          <div class="rating">★★★★★</div>
-          <p class="price">S/18/día</p>
-          <button class="btn-action">Alquilar</button>
-        </article>
-      </div>
-    </section>
-
-    <!-- SECCIÓN 3: SERVICIOS Y TESTIMONIOS -->
-    <section id="servicios" class="services-section">
-      <div class="service-row">
-        <img src="https://picsum.photos/id/191/400/200" alt="Poda y mantenimiento">
-        <div class="service-banner dark">
-          <h2>PODA Y MANTENIMIENTO DE ÁRBOLES</h2>
+      <div class="servicio-fila">
+        <img class="servicio-img" src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=800&q=80" alt="Mantenimiento integral de césped" />
+        <div class="servicio-texto bg-verde-fuerte">
+          <h3>MANTENIMIENTO INTEGRAL DE CÉSPED</h3>
+          <p>Corte, fertilización, aireación y control de malezas para áreas verdes impecables.</p>
         </div>
       </div>
 
-      <div class="service-row flex-reverse">
-        <img src="https://picsum.photos/id/152/400/200" alt="Mantenimiento de césped">
-        <div class="service-banner highlight">
-          <h2>MANTENIMIENTO INTEGRAL DE CÉSPED</h2>
+      <div class="servicio-fila">
+        <img class="servicio-img" src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=800&q=80" alt="Diseño de jardines" />
+        <div class="servicio-texto bg-verde-oscuro">
+          <h3>DISEÑO DE JARDINES</h3>
+          <p>Paisajismo residencial y corporativo adaptado a tu espacio y clima.</p>
         </div>
       </div>
 
-      <div class="service-row">
-        <img src="https://picsum.photos/id/110/400/200" alt="Diseño de jardines">
-        <div class="service-banner dark">
-          <h2>DISEÑO DE JARDINES</h2>
-        </div>
-      </div>
-
-      <!-- Testimonios -->
-      <div class="testimonials-block">
-        <img src="https://picsum.photos/id/64/150/150" alt="Familia feliz" class="testimonial-avatar">
-        <div class="testimonial-content">
+      <div class="testimonios-box">
+        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80" alt="Familia feliz" />
+        <div class="testimonios-contenido">
           <h3>Testimonios</h3>
-          <blockquote>"Estamos muy contentos con el diseño de nuestro jardín; transformaron JardínAlquila a otro nivel."</blockquote>
+          <p><em>"Estamos contentos con el diseño de nuestro jardín, definitivamente JardinAlquila es otro nivel"</em></p>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN 4: QUIÉNES SOMOS & CONTACTO -->
-    <section id="nosotros" class="about-contact-section">
-      <div class="about-column">
-        <h2>QUIÉNES SOMOS</h2>
-        <img src="https://picsum.photos/id/1005/500/250" alt="Equipo JardínAlquila" class="team-img">
-        
-        <h3>Nuestra Historia</h3>
-        <p>JardínAlquila es una empresa fundada en el año 2001, especializada en brindar soluciones integrales para el cuidado, mantenimiento y diseño de áreas verdes. Ofrecemos tanto el alquiler de herramientas y maquinaria de jardinería de última tecnología como un servicio profesional adaptado a las necesidades de clientes residenciales, comerciales y corporativos.</p>
-      </div>
+    <!-- ==========================================
+         PANTALLA 4: NOSOTROS / QUIÉNES SOMOS
+    =========================================== -->
+    <section id="pantalla-nosotros" class="screen">
+      <div class="nosotros-grid">
+        <div>
+          <h2 class="titulo-seccion">QUIÉNES SOMOS</h2>
+          <img class="equipo-img" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="Equipo AlquilaJardín" />
+          <div class="historia-box">
+            <h3>Nuestra Historia</h3>
+            <p>
+              JardínAlquila es una empresa fundada en el año 2001, especializada en brindar soluciones integrales para el cuidado, mantenimiento y diseño de áreas verdes. Ofrecemos tanto el alquiler de herramientas y maquinaria de jardinería de última tecnología como un servicio profesional adaptado a las necesidades de clientes residenciales, comerciales y corporativos.
+            </p>
+          </div>
+        </div>
 
-      <div class="contact-map-column">
-        <!-- Formulario -->
-        <div class="contact-box">
-          <h2>CONTACTO</h2>
-          <form id="contactForm">
-            <input type="text" placeholder="NOMBRE" required>
-            <input type="email" placeholder="Email" required>
-            <textarea placeholder="Mensaje" rows="4" required></textarea>
-            <button type="submit" class="btn-action">Enviar</button>
+        <div>
+          <div class="contacto-card">
+            <h3>CONTACTO</h3>
+            <form onsubmit="enviarContacto(event)">
+              <input type="text" placeholder="Nombre" required />
+              <input type="email" placeholder="Email" required />
+              <textarea rows="4" placeholder="Mensaje" required></textarea>
+              <button type="submit" class="btn-confirmar" style="background:#1b4d19;">Enviar Mensaje</button>
+            </form>
+          </div>
+
+          <div class="mapa-box">
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-77.15%2C-12.15%2C-76.95%2C-11.98&layer=mapnik&marker=-12.0464%2C-77.0428"
+              title="Ubicación Lima, Perú">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PANTALLA 5: COMPLETAR ALQUILER
+    =========================================== -->
+    <section id="pantalla-alquiler" class="screen">
+      <div class="alquiler-wrapper">
+        <div class="alquiler-modal">
+          <h2>COMPLETAR ALQUILER</h2>
+          <form onsubmit="confirmarReserva(event)">
+            <div class="alquiler-body">
+              <div>
+                <div class="form-grupo">
+                  <label for="nombre-cliente">Nombre Completo</label>
+                  <input type="text" id="nombre-cliente" placeholder="Ej. Abigail Dulanto" required />
+                </div>
+                <div class="form-grupo">
+                  <label for="telefono-cliente">Teléfono de contacto</label>
+                  <input type="tel" id="telefono-cliente" placeholder="Ej. 932 915 884" required />
+                </div>
+                <div class="form-grupo">
+                  <label for="fecha-inicio">Fecha de inicio</label>
+                  <input type="date" id="fecha-inicio" required />
+                </div>
+                <div class="form-grupo">
+                  <label for="dias-alquiler">Días de alquiler</label>
+                  <input type="number" id="dias-alquiler" min="1" value="1" required />
+                </div>
+              </div>
+
+              <div class="resumen-herramienta">
+                <img id="alquiler-img" src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=400&q=80" alt="Herramienta seleccionada" />
+                <h4 id="alquiler-nombre">Soplador Husqvarna</h4>
+                <div class="estrellas">★★★★★</div>
+                <div class="precio" id="alquiler-precio">$18/día</div>
+                <span style="display:inline-block; background:#348a2b; color:#fff; padding:4px 12px; border-radius:4px; font-size:0.85rem;">Seleccionado</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-confirmar">CONFIRMAR RESERVA</button>
           </form>
         </div>
+      </div>
+    </section>
 
-        <!-- Mapa -->
-        <div class="map-container">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249673.7153724227!2d-77.127863!3d-12.026268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c5f619ee3ec7%3A0x1420609be3542289!2sLima!5e0!3m2!1ses!2spe!4v1620000000000!5m2!1ses!2spe" 
-            width="100%" 
-            height="250" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy">
-          </iframe>
+    <!-- ==========================================
+         PANTALLA 6: RESERVA EXITOSA
+    =========================================== -->
+    <section id="pantalla-exito" class="screen">
+      <div class="exito-wrapper">
+        <div class="exito-card">
+          <div class="check-circle">✓</div>
+          <h2>¡Reserva exitosa!</h2>
+          <p id="mensaje-exito-detalle">Nos comunicaremos contigo pronto para coordinar la entrega.</p>
+        </div>
+        <button class="btn-volver-inicio" onclick="mostrarPantalla('inicio')">VOLVER AL INICIO</button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PANTALLA 7: MI CUENTA / INICIAR SESIÓN
+    =========================================== -->
+    <section id="pantalla-cuenta" class="screen">
+      <div class="login-wrapper">
+        <div class="login-logo" onclick="mostrarPantalla('inicio')">🌿 Alquila<span>Jardín</span></div>
+        <div class="login-sub">Mi cuenta</div>
+
+        <div class="login-card">
+          <h2>INICIAR SESIÓN</h2>
+          <form onsubmit="iniciarSesion(event)">
+            <label for="login-email">CORREO ELECTRÓNICO</label>
+            <input type="email" id="login-email" placeholder="correo@ejemplo.com" required />
+
+            <label for="login-pass">Contraseña</label>
+            <input type="password" id="login-pass" placeholder="••••••••" required />
+
+            <a href="#" class="olvido-pass" onclick="event.preventDefault(); alert('Te hemos enviado un enlace de recuperación a tu correo.');">¿Olvidaste la contraseña?</a>
+
+            <button type="submit" class="btn-registrate">INGRESAR / REGÍSTRATE</button>
+          </form>
+
+          <div class="social-login">
+            <button class="social-btn btn-google" title="Continuar con Google" onclick="mostrarPantalla('inicio')">G</button>
+            <button class="social-btn btn-fb" title="Continuar con Facebook" onclick="mostrarPantalla('inicio')">f</button>
+          </div>
         </div>
       </div>
     </section>
-  </main>
+  </div>
 
-  <!-- PIE DE PÁGINA (FOOTER) -->
-  <footer class="main-footer">
-    <div class="footer-top">
-      <div class="footer-logo">
-        <i class="fa-solid fa-leaf"></i>
-        <span>AlquilaJardín</span>
-      </div>
-      <div class="social-icons">
-        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-      </div>
-    </div>
-    
-    <div class="footer-bottom">
-      <p><i class="fa-brands fa-whatsapp"></i> Contacto: 982805651</p>
-      <p><i class="fa-regular fa-envelope"></i> Correo: JardinAlquil@gmail.com</p>
-    </div>
-  </footer>
+  <script>
+    // Cambiar entre las 7 pantallas
+    function mostrarPantalla(nombre) {
+      // Ocultar todas las pantallas
+      const pantallas = document.querySelectorAll('.screen');
+      pantallas.forEach(p => p.classList.remove('active'));
 
-  <script src="script.js"></script>
+      // Mostrar la pantalla elegida
+      const pantallaActiva = document.getElementById('pantalla-' + nombre);
+      if (pantallaActiva) {
+        pantallaActiva.classList.add('active');
+      }
+
+      // Actualizar estado activo del menú superior
+      const botonesNav = document.querySelectorAll('.nav-link');
+      botonesNav.forEach(b => b.classList.remove('active'));
+
+      const botonActivo = document.getElementById('nav-' + nombre);
+      if (botonActivo) {
+        botonActivo.classList.add('active');
+      }
+
+      // Alternar estilo de cabecera según la pantalla
+      const header = document.getElementById('main-header');
+      if (nombre === 'catalogo') {
+        header.classList.add('header-gris');
+      } else {
+        header.classList.remove('header-gris');
+      }
+
+      // Ocultar cabecera principal en pantalla de Login (como en el diseño 7)
+      header.style.display = (nombre === 'cuenta') ? 'none' : 'flex';
+
+      // Subir al inicio de la página
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Abrir Pantalla 5 (Completar Alquiler) cargando la herramienta seleccionada
+    function abrirAlquiler(nombreHerramienta, precioHerramienta, imagenUrl) {
+      document.getElementById('alquiler-nombre').textContent = nombreHerramienta;
+      document.getElementById('alquiler-precio').textContent = precioHerramienta;
+      document.getElementById('alquiler-img').src = imagenUrl;
+
+      // Establecer fecha de hoy por defecto
+      const hoy = new Date().toISOString().split('T')[0];
+      document.getElementById('fecha-inicio').value = hoy;
+
+      mostrarPantalla('alquiler');
+    }
+
+    // Confirmar Reserva -> Lleva a Pantalla 6 (¡Reserva exitosa!)
+    function confirmarReserva(event) {
+      event.preventDefault();
+      const cliente = document.getElementById('nombre-cliente').value;
+      const herramienta = document.getElementById('alquiler-nombre').textContent;
+      const dias = document.getElementById('dias-alquiler').value;
+
+      document.getElementById('mensaje-exito-detalle').textContent =
+        `¡Gracias ${cliente}! Tu reserva de ${herramienta} por ${dias} día(s) está lista. Nos comunicaremos contigo pronto para coordinar la entrega.`;
+
+      mostrarPantalla('exito');
+    }
+
+    // Filtrar herramientas en el catálogo
+    function filtrarProductos(categoria, boton) {
+      document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo'));
+      boton.classList.add('activo');
+
+      const tarjetas = document.querySelectorAll('.producto-card');
+      tarjetas.forEach(tarjeta => {
+        if (categoria === 'todos' || tarjeta.getAttribute('data-cat') === categoria) {
+          tarjeta.style.display = 'flex';
+        } else {
+          tarjeta.style.display = 'none';
+        }
+      });
+    }
+
+    // Formulario de contacto en Nosotros
+    function enviarContacto(event) {
+      event.preventDefault();
+      alert('¡Mensaje enviado! Gracias por contactar a AlquilaJardín.');
+      event.target.reset();
+    }
+
+    // Formulario de Iniciar Sesión
+    function iniciarSesion(event) {
+      event.preventDefault();
+      mostrarPantalla('inicio');
+    }
+  </script>
 </body>
 </html>
